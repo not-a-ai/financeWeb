@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { get, getAll, remove, save, update } from "./index.js";
+import { get, getAll, remove, save, update, getMe } from "./index.js";
+import { authMiddleware } from "../../middleware/authMiddleware.js";
 
 const router = Router();
 
@@ -7,6 +8,11 @@ router.get('/', async (_, res) => {
   const data = await getAll();
   res.status(200).json({ data });
 });
+
+router.get('/me', authMiddleware, async (req, res) => {
+  res.status(200).json({ data: req.user });
+});
+
 
 router.get('/:id', async (req, res) => {
   const data = await get(req.params.id);

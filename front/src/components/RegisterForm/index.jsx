@@ -8,7 +8,11 @@ export const RegisterForm = () => {
   const [password, setPassword] =  useState();
   const [name, setName] =  useState();
 
-  const [open, setOpen] = useState(false);
+  const [notification, setNotification] = useState({
+    open: false,
+    message: '',
+    severity: ''
+  });
 
   const onChangeValue = (e) => {
     const { name, value } = e.target;
@@ -22,21 +26,30 @@ export const RegisterForm = () => {
     try {
       const response = await axios.post('http://localhost:8080/auth/register', { email, password, name })
       localStorage.setItem('token', response.data.data.token)
-      handleClick();
+      setNotification({
+        open: true,
+        message: `Usuário ${ email } cadastrado com sucesso`,
+        severity: 'success'
+      })
     } catch (error) {
-      console.log(error)
+      setNotification({
+        open: true,
+        message: error.response.data.error,
+        severity: 'error'
+      })
     }
   };
 
-  const handleClick = () => {
-    setOpen(true)
-  }
 
   const handleClose = (_, reason) => {
     if (reason === 'clickaway') {
       return
     }
-    setOpen(false)
+    setNotification({
+      open: false,
+      message: '',
+      severity: ''
+    })
   }
 
   return (
@@ -46,15 +59,15 @@ export const RegisterForm = () => {
 
         <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="name" label="Nome" color="primary" />
         <S.TextField onChange={ onChangeValue } variant="outlined"  name="email" label="E-mail" color="primary" fullWidth/>
-        <S.TextField onChange={ onChangeValue }  variant="outlined" name="password" label="Senha" color="primary" fullWidth/>
+        <S.TextField onChange={ onChangeValue }  variant="outlined" name="password" label="Senha" type='password' color="primary" fullWidth/>
         <S.Button variant="contained" color="success" type='submit'>Enviar</S.Button>
         
       </S.Form>
       
       
-      <S.Snackbar open={ open } autoHideDuration={3000} onClose={handleClose}>
-        <S.Alert onClose={handleClose} severity='success' variant='filled' sx={{ width: '100%'}}>
-          Usuário {email} cadastrado com sucesso!
+      <S.Snackbar open={ notification.open } autoHideDuration={3000} onClose={handleClose}>
+        <S.Alert onClose={handleClose} severity={notification.severity} variant='filled' sx={{ width: '100%'}}>
+          {notification.message}
         </S.Alert>
       </S.Snackbar>
     </>
