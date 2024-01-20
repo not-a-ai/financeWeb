@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import axios from "axios";
+//import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
+import {CategoriasUpdate} from "@/components/Categorias/CategoriasUpdate";
 
 export const DashboardPage = () => {
   useEffect(() => {
@@ -24,6 +26,8 @@ export const DashboardPage = () => {
   return (
     <div>
       <h1>Dashboard</h1>
+      <CategoriasUpdate categoriaId={ 1 }/>
+
     </div>
   )
 }
