@@ -5,6 +5,7 @@ import bearerToken from 'express-bearer-token';
 dotenv.config();
 import userRouter from'./modules/user/user.route.js'
 import categoriaRouter from'./modules/categorias/categoria.route.js'
+import metasRouter from'./modules/metas/metas.route.js'
 import authRouter from './modules/auth/auth.route.js'
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(bearerToken());
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/categorias', categoriaRouter);
+app.use('/metas', metasRouter);
 
 app.get('/health', (_, res) => {
   return res.send('Sistema está operacional');

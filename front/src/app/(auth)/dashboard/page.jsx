@@ -3,7 +3,9 @@
 import { useEffect } from "react";
 import axios from "axios";
 //import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
-import {CategoriasUpdate} from "@/components/Categorias/CategoriasUpdate";
+//import {CategoriasUpdate} from "@/components/Categorias/CategoriasUpdate";
+//import {MetasCreate} from "@/components/Metas/MetasCreate";
+import {MetasUpdate} from "@/components/Metas/MetasUpdate";
 
 export const DashboardPage = () => {
   useEffect(() => {
@@ -17,7 +19,6 @@ export const DashboardPage = () => {
       'Authorization': `Bearer ${token}`
   }
   }).then(response => {
-    console.log(response.data.data)
   }).catch(error => {
     window.location.href = '/login'
   }) 
@@ -26,7 +27,8 @@ export const DashboardPage = () => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <CategoriasUpdate categoriaId={ 1 }/>
+      {/* <MetasCreate /> */}
+      <MetasUpdate metaId={ 1 }/>
 
     </div>
   )
