@@ -7,6 +7,7 @@ export const RegisterForm = () => {
   const [email, setEmail] =  useState();
   const [password, setPassword] =  useState();
   const [name, setName] =  useState();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [notification, setNotification] = useState({
     open: false,
@@ -52,16 +53,47 @@ export const RegisterForm = () => {
     })
   }
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <>
       <S.Form onSubmit ={ onSubmit }>
-        <S.H1>Cadastre-se </S.H1>
+      <S.Typography variant='h1' color='primary' style={{marginBottom: '64px'}}>YOURfinance.IO</S.Typography>
+      <S.Typography variant='h2' color='black' style={{marginBottom: '64px'}}>Crie sua conta</S.Typography>
+
 
         <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="name" label="Nome" color="primary" />
         <S.TextField onChange={ onChangeValue } variant="outlined"  name="email" label="E-mail" color="primary" fullWidth/>
-        <S.TextField onChange={ onChangeValue }  variant="outlined" name="password" label="Senha" type='password' color="primary" fullWidth/>
-        <S.Button variant="contained" color="success" type='submit'>Enviar</S.Button>
-        
+
+        <S.FormControl fullWidth variant="outlined" style={{marginBottom: '64px'}}>
+          <S.InputLabel htmlFor="filled-adornment-password">Senha</S.InputLabel>
+          <S.OutlinedInput
+            id="outlined-adornment-password"
+            name='password'
+            onChange={ onChangeValue }
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <S.InputAdornment position="end">
+                <S.IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <S.VisibilityOff /> : <S.Visibility />}
+                </S.IconButton>
+              </S.InputAdornment>
+            }
+          />
+        </S.FormControl>
+
+
+        <S.Button variant="contained" color="primary" type='submit' fullWidth>Enviar</S.Button>
+        <div> Já possui uma conta? <S.Link href='/login'>Faça o login aqui.</S.Link></div>
       </S.Form>
       
       
