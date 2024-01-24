@@ -1,11 +1,15 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as S from './style';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
 
-export const CategoriasCreate = () => {
+export const CategoriasCreate = ({openModal, closeModal}) => {
   const [name, setName] =  useState();
-
   
   const [notification, setNotification] = useState({
     open: false,
@@ -23,7 +27,7 @@ export const CategoriasCreate = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/categorias', { name }, {
+      await axios.post('http://localhost:8080/categorias', { name }, {
         headers: {
           Authorization: `Bearer ${ token }`
         }
@@ -34,6 +38,7 @@ export const CategoriasCreate = () => {
         message: `Categoria ${ name } criada com sucesso`,
         severity: 'success'
       })
+      handleCloseModal()
     } catch (error) {
       setNotification({
         open: true,
@@ -55,24 +60,40 @@ export const CategoriasCreate = () => {
     })
   }
 
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(openModal) {setOpen(true)};
+  }, [openModal])
+
+  const handleCloseModal = () => {
+    setOpen(false);
+    closeModal(false);
+  };
 
   return (
     <>
-      < S.Form onSubmit ={ onSubmit }>
-      <S.H1>Criar Categoria</S.H1>
-
-        <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="name" label="Nome" color="primary"/>
-     
-        <S.Button variant="contained" color="success" type='submit'>Enviar</S.Button>
-        
-      </S.Form>
-
-
       <S.Snackbar open={ notification.open } autoHideDuration={3000} onClose={handleClose}>
         <S.Alert onClose={handleClose} severity={notification.severity} variant='filled' sx={{ width: '100%'}}>
           {notification.message}
         </S.Alert>
       </S.Snackbar>
+
+      <Dialog open={open} onClose={handleCloseModal}>
+        <DialogTitle>Nova categoria</DialogTitle>
+        <DialogContent>
+
+          < S.Form onSubmit ={ onSubmit }>
+            
+              <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="name" label="Nome" color="primary"/>
+              
+          </S.Form>
+        </DialogContent>
+        <DialogActions style={{display: 'flex', justifyContent: 'center'}}>
+          <Button onClick={handleCloseModal}>Cancelar</Button>
+          <S.Button variant="contained" color="primary" type='submit' onClick={onSubmit}>Salvar</S.Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }

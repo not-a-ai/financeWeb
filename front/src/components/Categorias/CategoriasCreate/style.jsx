@@ -4,7 +4,8 @@ import TextFieldMUI from '@mui/material/TextField'
 import AlertMUI from '@mui/material/Alert'
 import SnackbarMUI from '@mui/material/Snackbar'
 
-export const Button = styled(ButtonMUI)``
+export const Button = styled(ButtonMUI)`
+text-align: center`
 export const TextField = styled(TextFieldMUI)``
 export const H1 = styled.h1`
 `
