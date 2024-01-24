@@ -6,9 +6,9 @@ import axios from "axios";
 //import {CategoriasUpdate} from "@/components/Categorias/CategoriasUpdate";
 //import {MetasCreate} from "@/components/Metas/MetasCreate";
 //import {MetasUpdate} from "@/components/Metas/MetasUpdate";
-import {CateriaCreate} from "@/components/Categorias/CategoriasCreate";
-import TransacoesCreate from "@/components/Transacoes/TransacoesCreate";
-import TransacoesUpdate from "@/components/Transacoes/TransacoesUpdate";
+// import {CateriaCreate} from "@/components/Categorias/CategoriasCreate";
+// import {TransacoesCreate} from "@/components/Transacoes/TransacoesCreate";
+// import {TransacoesUpdate} from "@/components/Transacoes/TransacoesUpdate";
 //import {CateriaUpdate} from "@/components/Categorias/CategoriasUpdate";
 
 
@@ -35,7 +35,7 @@ export const DashboardPage = () => {
       {/* <MetasCreate /> */}
       {/* <MetasUpdate metaId={ 1 }/> */}
       {/* <TransacoesCreate/> */}
-      <TransacoesUpdate transacaoId={ 1 }/>
+      {/* <TransacoesUpdate transacaoId={ 1 }/> */}
 
     </div>
   )

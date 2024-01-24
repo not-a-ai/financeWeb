@@ -35,7 +35,7 @@ export const LoginForm = () => {
     } catch (error) {
       setNotification({
         open: true,
-        message: error.response.data.error,
+        message: error.response,
         severity: 'error'
       })
     }
