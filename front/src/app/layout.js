@@ -6,8 +6,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 const inter = Inter({ subsets: ['latin'] })
 
-
-
 const theme = createTheme({
   palette: {
     primary: {

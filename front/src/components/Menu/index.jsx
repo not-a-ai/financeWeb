@@ -90,7 +90,7 @@ export const Menu = ({children}) => {
                 <ListItemIcon onClick={ doLogout }>
                 <LogoutIcon style={{color: '#fff'}}/>
                 </ListItemIcon>
-                <ListItemText primary="Sair" />
+                <ListItemText primary="Sair"  />
               </ListItemButton>
               
             </ListItem>

@@ -7,4 +7,5 @@ import TypographyMUI from '@mui/material/Typography'
 export const Typography = styled(TypographyMUI)``
 export const Link = styled(LinkNEXT)`
 text-decoration: none;
+color: #fff;
 `

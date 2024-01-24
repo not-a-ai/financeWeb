@@ -2,12 +2,16 @@
 import { useState } from 'react';
 import axios from 'axios';
 import * as S from './style';
+import { useRouter } from 'next/navigation';
 
 export const RegisterForm = () => {
   const [email, setEmail] =  useState();
   const [password, setPassword] =  useState();
   const [name, setName] =  useState();
   const [showPassword, setShowPassword] = useState(false);
+
+  
+  const router = useRouter();
 
   const [notification, setNotification] = useState({
     open: false,
@@ -32,6 +36,7 @@ export const RegisterForm = () => {
         message: `Usuário ${ email } cadastrado com sucesso`,
         severity: 'success'
       })
+      router.push("/dashboard")
     } catch (error) {
       setNotification({
         open: true,
