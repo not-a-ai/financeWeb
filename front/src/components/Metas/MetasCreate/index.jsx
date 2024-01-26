@@ -9,6 +9,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from '@mui/material';
 
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import {formatISO} from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 const NumericFormatCustom = forwardRef(function NumericFormatCustom(
   props,
   ref,
@@ -57,7 +63,7 @@ export const MetasCreate = ({openModal, closeModal}) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/metas', { descricao, valor: valor * 100, data: dataMeta}, {
+      const response = await axios.post('http://localhost:8080/metas', { descricao, valor: valor * 100, data: formatISO(dataMeta, {representation: 'date', locale: ptBR})}, {
         headers: {
           Authorization: `Bearer ${ token }`
         }
@@ -129,7 +135,10 @@ export const MetasCreate = ({openModal, closeModal}) => {
           }}
           fullWidth/>
 
-          <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="dataMeta" label="Data Meta" color="primary"/>
+          <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
+            <DatePicker  onChange={ (newValue) => {setDataMeta(newValue)} } variant="outlined"  value="dataMeta" label="Data" color="primary" />
+          </LocalizationProvider>
+
           </S.Form>
         </DialogContent>
         <DialogActions style={{display: 'flex', justifyContent: 'center'}}>

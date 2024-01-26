@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
 import {MetasCreate} from "@/components/Metas/MetasCreate";
 
+
 export const ExtratoPage = () => {
   const [user, setUser] = useState({
     id: null
