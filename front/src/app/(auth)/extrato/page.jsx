@@ -4,10 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from '@mui/material/Button'
 import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
+import {MetasCreate} from "@/components/Metas/MetasCreate";
 
 export const ExtratoPage = () => {
+  const [user, setUser] = useState({
+    id: null
+  })
 
-  const [ openModal, setOpenModal ] = useState(false);
+  const [ openModalCategoria, setOpenModalCategoria ] = useState(false);
+  const [ openModalMeta, setOpenModalMeta ] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -19,7 +25,8 @@ export const ExtratoPage = () => {
         'Authorization': `Bearer ${token}`
     }
     }).then(response => {
-    }).catch(error => {
+      setUser(response.data.data)
+    }).catch(_ => {
       window.location.href = '/login'
     }) 
   }, [])
@@ -28,11 +35,12 @@ export const ExtratoPage = () => {
   return (
     <>
       <div style={{ display: 'flex', gap: '15px'}}>
-        <Button variant="contained" color="primary" type='submit' onClick={() => setOpenModal(true)}>Nova categoria</Button>
+        <Button variant="contained" color="primary" type='submit' onClick={() => setOpenModalCategoria(true)}>Nova categoria</Button>
         <Button variant="contained" color="primary" type='submit'>Nova transação</Button>
-        <Button variant="contained" color="primary" type='submit'>Nova meta</Button>
+        <Button variant="contained" color="primary" type='submit' onClick={() => setOpenModalMeta(true)}>Nova meta</Button>
       </div>
-      <CategoriasCreate openModal={openModal} closeModal={setOpenModal}/>
+      <CategoriasCreate openModal={openModalCategoria} closeModal={setOpenModalCategoria}/>
+      <MetasCreate openModal={openModalMeta} closeModal={setOpenModalMeta}/>
     </>
   )
 }

@@ -1,9 +1,40 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect, forwardRef} from 'react';
+import { NumericFormat } from 'react-number-format';
 import axios from 'axios';
 import * as S from './style';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
 
-export const MetasCreate = () => {
+const NumericFormatCustom = forwardRef(function NumericFormatCustom(
+  props,
+  ref,
+) {
+  const { onChange, ...other } = props;
+  return (
+    <NumericFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator="."
+      decimalSeparator=","
+      valueIsNumericString
+      prefix="R$ "
+    />
+  );
+});
+
+export const MetasCreate = ({openModal, closeModal}) => {
   const [descricao, setDescricao] =  useState();
   const [valor, setValor] =  useState();
   const [dataMeta, setDataMeta] =  useState();
@@ -26,7 +57,7 @@ export const MetasCreate = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/metas', { descricao, valor, data: dataMeta}, {
+      const response = await axios.post('http://localhost:8080/metas', { descricao, valor: valor * 100, data: dataMeta}, {
         headers: {
           Authorization: `Bearer ${ token }`
         }
@@ -58,26 +89,54 @@ export const MetasCreate = () => {
     })
   }
 
+  
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(openModal) {setOpen(true)};
+  }, [openModal])
+
+  const handleCloseModal = () => {
+    setOpen(false);
+    closeModal(false);
+  };
+
 
   return (
     <>
-      < S.Form onSubmit ={ onSubmit }>
-      <S.H1>Criar Meta</S.H1>
-
-        <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="descricao" label="Descrição" color="primary"/>
-        <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="valor" label="Valor" color="primary"/>
-        <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="dataMeta" label="Data Meta" color="primary"/>
-     
-        <S.Button variant="contained" color="success" type='submit'>Enviar</S.Button>
-        
-      </S.Form>
-
 
       <S.Snackbar open={ notification.open } autoHideDuration={3000} onClose={handleClose}>
         <S.Alert onClose={handleClose} severity={notification.severity} variant='filled' sx={{ width: '100%'}}>
           {notification.message}
         </S.Alert>
       </S.Snackbar>
+
+      <Dialog open={open} onClose={handleCloseModal}>
+        <DialogTitle>Nova meta</DialogTitle>
+        <DialogContent>
+
+          < S.Form onSubmit ={ onSubmit }>
+            
+          <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="descricao" label="Descrição" color="primary"/>
+          <S.TextField 
+          variant="outlined" 
+          label="Valor"
+          onChange={ onChangeValue }
+          name="valor"
+          id="formatted-numberformat-input"
+          InputProps={{
+            inputComponent: NumericFormatCustom,
+          }}
+          fullWidth/>
+
+          <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="dataMeta" label="Data Meta" color="primary"/>
+          </S.Form>
+        </DialogContent>
+        <DialogActions style={{display: 'flex', justifyContent: 'center'}}>
+          <Button onClick={handleCloseModal}>Cancelar</Button>
+          <S.Button variant="contained" color="primary" type='submit' onClick={onSubmit}>Salvar</S.Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
