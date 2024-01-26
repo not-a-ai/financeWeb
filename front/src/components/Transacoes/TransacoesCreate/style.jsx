@@ -8,15 +8,19 @@ import InputLabelMUI from '@mui/material/InputLabel'
 import SelectMUI from '@mui/material/Select'
 import MenuItemMUI from '@mui/material/MenuItem'
 
-export const Button = styled(ButtonMUI)``
-export const TextField = styled(TextFieldMUI)``
+export const Button = styled(ButtonMUI)`
+margin-top: 15px`
+export const TextField = styled(TextFieldMUI)`
+margin-bottom: 15px`
 export const H1 = styled.h1`
 `
-export const Form = styled.form``
+export const Form = styled.form`
+margin-bottom: 15px`
 export const Alert = styled(AlertMUI)``
 
 export const Snackbar = styled(SnackbarMUI)``
-export const FormControl = styled(FormControlMUI)``
+export const FormControl = styled(FormControlMUI)`
+margin-bottom: 15px`
 export const InputLabel = styled(InputLabelMUI)``
 export const Select = styled(SelectMUI)``
 export const MenuItem = styled(MenuItemMUI)``

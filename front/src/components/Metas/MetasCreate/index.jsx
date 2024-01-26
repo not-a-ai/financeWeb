@@ -8,7 +8,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from '@mui/material';
-
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -43,7 +42,7 @@ const NumericFormatCustom = forwardRef(function NumericFormatCustom(
 export const MetasCreate = ({openModal, closeModal}) => {
   const [descricao, setDescricao] =  useState();
   const [valor, setValor] =  useState();
-  const [dataMeta, setDataMeta] =  useState();
+  const [dataMeta, setDataMeta] =  useState(new Date());
 
   const onChangeValue = (e) => {
     const { name, value } = e.target;
@@ -68,12 +67,13 @@ export const MetasCreate = ({openModal, closeModal}) => {
           Authorization: `Bearer ${ token }`
         }
       })
-      console.log(response)
       setNotification({
         open: true,
         message: `Meta ${ descricao } criada com sucesso`,
         severity: 'success'
       })
+
+      handleCloseModal()
     } catch (error) {
       setNotification({
         open: true,
