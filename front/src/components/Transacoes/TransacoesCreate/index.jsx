@@ -68,7 +68,7 @@ export const TransacoesCreate = ({openModal, closeModal}) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/transacoes', { descricao, valor: valor*100, data: formatISO(dataTransacao, {representation: 'date', locale: ptBR}), tipo, categoria_id: categoria}, {
+      await axios.post('http://localhost:8080/transacoes', { descricao, valor: valor*100, data: formatISO(dataTransacao, {representation: 'date', locale: ptBR}), tipo, categoria_id: categoria}, {
         headers: {
           Authorization: `Bearer ${ token }`
         }
