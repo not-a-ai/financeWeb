@@ -6,8 +6,6 @@ import {compareAsc, format} from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 export const TransacoesList = () => {
-
-
   const [ transacoes, setTransacoes ] = useState([])
   const [ transacoesTable, setTransacoesTable ] = useState([])
   const [ tipo, setTipo ] = useState('todas')

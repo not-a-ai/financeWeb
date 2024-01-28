@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
 //import {CategoriasUpdate} from "@/components/Categorias/CategoriasUpdate";
@@ -10,9 +10,14 @@ import {CategoriasCreate} from "@/components/Categorias/CategoriasCreate";
 // import {TransacoesCreate} from "@/components/Transacoes/TransacoesCreate";
 // import {TransacoesUpdate} from "@/components/Transacoes/TransacoesUpdate";
 //import {CateriaUpdate} from "@/components/Categorias/CategoriasUpdate";
+import {Chart} from "@/components/Charts";
+import {Panel} from "@/components/Panel";
 
 
 export const DashboardPage = () => {
+  const [ user, setUser ] = useState({
+    id: null
+  })
   useEffect(() => {
   const token = localStorage.getItem('token')
   if (!token) {
@@ -24,6 +29,7 @@ export const DashboardPage = () => {
       'Authorization': `Bearer ${token}`
   }
   }).then(response => {
+    setUser(response.data.data)
   }).catch(error => {
     window.location.href = '/login'
   }) 
@@ -31,13 +37,12 @@ export const DashboardPage = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      {/* <CategoriasCreate/> */}
-      {/* <MetasCreate /> */}
-      {/* <MetasUpdate metaId={ 1 }/> */}
-      {/* <TransacoesCreate/> */}
-      {/* <TransacoesUpdate transacaoId={ 1 }/> */}
-
+      <h1>Olá, {user.name}</h1>
+      <Panel/>
+      <div style={{marginLeft: '80px'}}>
+        <Chart />
+      </div>
+      
     </div>
   )
 }
