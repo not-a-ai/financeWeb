@@ -1,7 +1,7 @@
 'use client'
 import * as S from './style.jsx'
 import { Icon } from '@mui/material'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const Card = ({ children, label, valor, isMeta, metas = [], saldo = 0})  => {
   const [ meta, setMeta ] = useState(null)
@@ -10,7 +10,7 @@ export const Card = ({ children, label, valor, isMeta, metas = [], saldo = 0})  
   const onChangeValue = (e) => {
     const { name, value } = e.target;
     if (name === 'meta') setMeta(value);
-    console.log(meta)
+  
   }
 
   return (

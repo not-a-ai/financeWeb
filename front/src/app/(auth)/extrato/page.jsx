@@ -10,9 +10,7 @@ import {TransacoesList} from "@/components/Transacoes/TransacoesList"
 
 
 export const ExtratoPage = () => {
-  const [user, setUser] = useState({
-    id: null
-  })
+
 
   const [ openModalCategoria, setOpenModalCategoria ] = useState(false);
   const [ openModalMeta, setOpenModalMeta ] = useState(false);
@@ -28,9 +26,7 @@ export const ExtratoPage = () => {
       headers: { 
         'Authorization': `Bearer ${token}`
     }
-    }).then(response => {
-      setUser(response.data.data)
-    }).catch(_ => {
+    }).then(_ => {}).catch(_ => {
       window.location.href = '/login'
     }) 
   }, [])

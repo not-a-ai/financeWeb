@@ -19,7 +19,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/navigation';
 
 
-const drawerWidth = 280;
+const drawerWidth = 240;
 
 export const Menu = ({children}) => {
   const router = useRouter()
@@ -46,7 +46,7 @@ export const Menu = ({children}) => {
         variant="permanent"
         anchor="left"
       >
-        <S.Typography variant='h1' color="primary" style={{ marginTop: '48px', marginBottom: '40px'}}>YOURfinance.IO</S.Typography>
+        <S.Typography variant='h2' color="primary" style={{ marginTop: '40px', margin: '30px'}}>YOURfinance.IO</S.Typography>
         <List>
           
             <ListItem  disablePadding>
@@ -102,7 +102,7 @@ export const Menu = ({children}) => {
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
-        <Toolbar />
+        <Toolbar style={{marginTop: '-90px'}}/>
         {children}
       </Box>
     </Box>

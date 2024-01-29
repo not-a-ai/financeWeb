@@ -1,6 +1,13 @@
+'use client'
+
+
+
 export const CategoriaPage = () => {
+
   return (
-    <>CategoriaPage</>
+    <>
+      CategoriaPage
+    </>
   )
 }
 
