@@ -85,12 +85,7 @@ export const TransacoesList = () => {
 
   return (
     <>
-
-      <div style={{ display: 'flex', gap: '15px', margin: '30px 0 30px 0'}}>
-        <div onClick={() => setTipo('Todas')}>Todas Transações</div>
-        <div onClick={() => setTipo('Receitas')}>Receitas</div>
-        <div onClick={() => setTipo('Despesas')}>Despesas</div>
-      </div>
+     
       < S.FormControl >
             <S.InputLabel id="anos_select">Anos</S.InputLabel>
             <S.Select
@@ -106,15 +101,22 @@ export const TransacoesList = () => {
             </S.Select>
             
       </S.FormControl>
+
+      <div style={{ display: 'flex', gap: '15px', margin: '30px 0 30px 0'}}>
+        <S.Button variant="outlined" onClick={() => setTipo('Todas')}>Todas Transações</S.Button>
+        <S.Button variant="outlined" onClick={() => setTipo('Receitas')}>Receitas</S.Button>
+        <S.Button variant="outlined" onClick={() => setTipo('Despesas')}>Despesas</S.Button>
+      </div>
+
       <S.TableContainer component={S.Paper}>
         <S.Table sx={{ minWidth: 650 }} aria-label="simple table">
           <S.TableHead>
             <S.TableRow>
-              <S.TableCell>Descrição</S.TableCell>
-              <S.TableCell align="right">Transação</S.TableCell>
-              <S.TableCell align="right">Data</S.TableCell>
-              <S.TableCell align="right">Situação</S.TableCell>
-              <S.TableCell align="right">Valor</S.TableCell>
+              <S.TableCell style={{fontWeight: '700'}}>Descrição</S.TableCell>
+              <S.TableCell style={{fontWeight: '700'}} align="right">Transação</S.TableCell>
+              <S.TableCell style={{fontWeight: '700'}} align="right">Data</S.TableCell>
+              <S.TableCell style={{fontWeight: '700'}} align="right">Situação</S.TableCell>
+              <S.TableCell style={{fontWeight: '700'}} align="right">Valor</S.TableCell>
             </S.TableRow>
           </S.TableHead>
           <S.TableBody>

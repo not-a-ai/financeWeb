@@ -10,6 +10,7 @@ import FormControlMUI from '@mui/material/FormControl'
 import InputLabelMUI from '@mui/material/InputLabel'
 import SelectMUI from '@mui/material/Select'
 import MenuItemMUI from '@mui/material/MenuItem'
+import ButtonMUI from '@mui/material/Button'
 
 
 export const Table = styled(TableMUI)`
@@ -17,17 +18,25 @@ export const Table = styled(TableMUI)`
 export const TableBody = styled(TableBodyMUI)`
 `
 export const TableCell = styled(TableCellMUI)`
+
 `
 export const TableContainer = styled(TableContainerMUI)`
 `
 export const TableHead = styled(TableHeadMUI)`
+
 `
 export const TableRow = styled(TableRowMUI)`
 `
 export const Paper = styled(PaperMUI)`
 `
 export const FormControl = styled(FormControlMUI)`
-margin-bottom: 30px`
+margin: 20px;  
+`
 export const InputLabel = styled(InputLabelMUI)``
-export const Select = styled(SelectMUI)``
+export const Select = styled(SelectMUI)`
+ `
 export const MenuItem = styled(MenuItemMUI)``
+
+export const Button = styled(ButtonMUI)`
+  margin: 20px;  
+`

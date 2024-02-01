@@ -15,6 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import GridViewIcon from '@mui/icons-material/GridView';
 import SwapHorizontal from '@mui/icons-material/SwapHoriz';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/navigation';
 
@@ -80,6 +81,17 @@ export const Menu = ({children}) => {
                 <SwapHorizontal style={{color: '#fff'}}/>
                 </ListItemIcon>
                 <ListItemText primary="Extrato" />
+              </ListItemButton>
+              </S.Link>
+            </ListItem>
+
+            <ListItem  disablePadding>
+              <S.Link href="/metas">
+              <ListItemButton>
+                <ListItemIcon>
+                <FlagCircleIcon style={{color: '#fff'}}/>
+                </ListItemIcon>
+                <ListItemText primary="Metas" />
               </ListItemButton>
               </S.Link>
             </ListItem>

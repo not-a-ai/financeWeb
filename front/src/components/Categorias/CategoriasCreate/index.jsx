@@ -10,7 +10,6 @@ import { Button } from '@mui/material';
 
 export const CategoriasCreate = ({openModal, closeModal}) => {
   const [name, setName] =  useState();
-  
   const [notification, setNotification] = useState({
     open: false,
     message: '',
