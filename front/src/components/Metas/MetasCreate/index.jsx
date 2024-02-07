@@ -62,7 +62,7 @@ export const MetasCreate = ({openModal, closeModal}) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/metas', { descricao, valor: valor * 100, data: formatISO(dataMeta, {representation: 'date', locale: ptBR})}, {
+      await axios.post('http://localhost:8080/metas', { descricao, valor: valor * 100, data: formatISO(dataMeta, {representation: 'date', locale: ptBR})}, {
         headers: {
           Authorization: `Bearer ${ token }`
         }

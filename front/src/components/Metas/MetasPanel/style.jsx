@@ -1,16 +1,23 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
+import ButtonMUI from '@mui/material/Button'
+import TextFieldMUI from '@mui/material/TextField'
 import FormControlMUI from '@mui/material/FormControl'
 import InputLabelMUI from '@mui/material/InputLabel'
 import SelectMUI from '@mui/material/Select'
 import MenuItemMUI from '@mui/material/MenuItem'
+
+export const Button = styled(ButtonMUI)`
+text-align: center`
+export const TextField = styled(TextFieldMUI)``
+export const H1 = styled.h1`
+`
 
 export const ChartContainer = styled.div`
   background-color: #fff;
   display: flex;
   itens-align: center;
   padding: 24px 28px; 
-  border-radius: 10px;
-  margin-bottom: 2rem;
+  flex-direction: column;
 `
 
 export const IconWrapper = styled.div`
@@ -20,7 +27,6 @@ export const IconWrapper = styled.div`
 `
 
 export const Content = styled.div`
-  width: 100%;
   text-align: center;
 `
 export const FormControl = styled(FormControlMUI)``

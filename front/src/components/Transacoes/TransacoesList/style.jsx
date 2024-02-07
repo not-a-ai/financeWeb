@@ -30,7 +30,7 @@ export const TableRow = styled(TableRowMUI)`
 export const Paper = styled(PaperMUI)`
 `
 export const FormControl = styled(FormControlMUI)`
-margin: 20px;  
+ 
 `
 export const InputLabel = styled(InputLabelMUI)``
 export const Select = styled(SelectMUI)`

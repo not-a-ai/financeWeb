@@ -15,7 +15,7 @@ export const Card = ({ children, label, valor, isMeta, metas = [], saldo = 0})  
 
   return (
     <>
-      <S.ChartContainer>
+      <S.ChartContainer >
         <S.IconWrapper>
           <Icon sx={{ color: '#fff'}}>{children}</Icon>
         </S.IconWrapper>

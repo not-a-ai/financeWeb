@@ -85,7 +85,7 @@ export const TransacoesList = () => {
 
   return (
     <>
-     
+     <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}> 
       < S.FormControl >
             <S.InputLabel id="anos_select">Anos</S.InputLabel>
             <S.Select
@@ -106,6 +106,7 @@ export const TransacoesList = () => {
         <S.Button variant="outlined" onClick={() => setTipo('Todas')}>Todas Transações</S.Button>
         <S.Button variant="outlined" onClick={() => setTipo('Receitas')}>Receitas</S.Button>
         <S.Button variant="outlined" onClick={() => setTipo('Despesas')}>Despesas</S.Button>
+      </div>
       </div>
 
       <S.TableContainer component={S.Paper}>
@@ -134,6 +135,7 @@ export const TransacoesList = () => {
           </S.TableBody>
         </S.Table>
     </S.TableContainer>
+    
     </>
   )
 }
