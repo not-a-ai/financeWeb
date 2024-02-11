@@ -2,12 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as S from './style';
-import { Icon } from '@mui/material'
-import Grid from '@mui/material/Grid';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import SwapHorizontal from '@mui/icons-material/SwapHoriz';
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import AdsClickIcon from '@mui/icons-material/AdsClick';
+
 
 export const CategoriaPanel = () => {
 

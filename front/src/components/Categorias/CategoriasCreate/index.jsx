@@ -68,6 +68,7 @@ export const CategoriasCreate = ({openModal, closeModal}) => {
   const handleCloseModal = () => {
     setOpen(false);
     closeModal(false);
+    location.reload();
   };
 
   return (

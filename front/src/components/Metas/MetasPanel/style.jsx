@@ -5,6 +5,8 @@ import FormControlMUI from '@mui/material/FormControl'
 import InputLabelMUI from '@mui/material/InputLabel'
 import SelectMUI from '@mui/material/Select'
 import MenuItemMUI from '@mui/material/MenuItem'
+import AlertMUI from '@mui/material/Alert'
+import SnackbarMUI from '@mui/material/Snackbar'
 
 export const Button = styled(ButtonMUI)`
 text-align: center`
@@ -33,3 +35,6 @@ export const FormControl = styled(FormControlMUI)``
 export const InputLabel = styled(InputLabelMUI)``
 export const Select = styled(SelectMUI)``
 export const MenuItem = styled(MenuItemMUI)``
+
+export const Alert = styled(AlertMUI)``
+export const Snackbar = styled(SnackbarMUI)``

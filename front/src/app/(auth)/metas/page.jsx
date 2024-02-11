@@ -29,9 +29,11 @@ export const MetaPage = () => {
   
   return (
     <>
-      <Button variant="contained" color="primary" type='submit' onClick={() => setOpenModalMeta(true)}>Nova meta</Button>
-     <MetasCreate openModal={openModalMeta} closeModal={setOpenModalMeta}/> 
-    <MetasPanel/>  
+    <div style={{margin: '1rem'}}>
+      <Button variant="contained" color="primary" type='submit' onClick={() => setOpenModalMeta(true)} style={{margin: '1rem'}}>Nova meta</Button>
+      <MetasCreate openModal={openModalMeta} closeModal={setOpenModalMeta}/> 
+      <MetasPanel/> 
+    </div> 
     </>
   )
 }

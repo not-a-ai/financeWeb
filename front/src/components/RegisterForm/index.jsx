@@ -67,14 +67,14 @@ export const RegisterForm = () => {
   return (
     <>
       <S.Form onSubmit ={ onSubmit }>
-      <S.Typography variant='h1' color='primary' style={{marginBottom: '64px'}}>YOURfinance.IO</S.Typography>
-      <S.Typography variant='h2' color='black' style={{marginBottom: '64px'}}>Crie sua conta</S.Typography>
+      <S.Typography variant='h1' color='primary' style={{marginBottom: '1rem'}}>YOURfinance.IO</S.Typography>
+      <S.Typography variant='h2' color='black' style={{marginBottom: '1rem'}}>Crie sua conta</S.Typography>
 
 
         <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="name" label="Nome" color="primary" />
         <S.TextField onChange={ onChangeValue } variant="outlined"  name="email" label="E-mail" color="primary" fullWidth/>
 
-        <S.FormControl fullWidth variant="outlined" style={{marginBottom: '64px'}}>
+        <S.FormControl fullWidth variant="outlined" style={{marginBottom: '1rem'}}>
           <S.InputLabel htmlFor="filled-adornment-password">Senha</S.InputLabel>
           <S.OutlinedInput
             id="outlined-adornment-password"

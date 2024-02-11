@@ -15,10 +15,10 @@ import VisibilityOffMUI  from '@mui/icons-material/VisibilityOff'
 
 
 export const Button = styled(ButtonMUI)`
-  margin-bottom: 40px;  
+  margin-bottom: 1rem;  
 `
 export const TextField = styled(TextFieldMUI)`
-  margin-bottom: 64px;
+  margin-bottom: 1rem;
   `
 export const H1 = styled.h1`
 `

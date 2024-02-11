@@ -36,7 +36,7 @@ export const LoginForm = () => {
     } catch (error) {
       setNotification({
         open: true,
-        message: error.response,
+        message:  `Email ou senha errado.`,
         severity: 'error'
       })
     }

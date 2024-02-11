@@ -74,6 +74,7 @@ export const MetasCreate = ({openModal, closeModal}) => {
       })
 
       handleCloseModal()
+      location.reload();
     } catch (error) {
       setNotification({
         open: true,

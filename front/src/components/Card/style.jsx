@@ -8,13 +8,13 @@ export const ChartContainer = styled.div`
   background-color: #fff;
   display: flex;
   itens-align: center;
-  padding: 24px 28px; 
+  padding: 1rem 1rem; 
   border-radius: 10px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 
 export const IconWrapper = styled.div`
-  padding: 12px 13px;
+  padding:  1rem 1rem; 
   background: #299D91;
   border-radius: 8px;
 `
