@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import * as S from './style';
 
 export const LoginForm = () => {
-  const [email, setEmail] =  useState();
-  const [password, setPassword] =  useState();
+  const [email, setEmail] =  useState('');
+  const [password, setPassword] =  useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
@@ -66,11 +66,14 @@ export const LoginForm = () => {
       <S.Typography variant='h1' color='primary' style={{marginBottom: '64px'}}>YOURfinance.IO</S.Typography>
 
         <S.TextField fullWidth onChange={ onChangeValue } variant="outlined"  name="email" label="E-mail" color="primary" />
-        <S.FormControl fullWidth variant="outlined" style={{marginBottom: '64px'}}>
-          <S.InputLabel htmlFor="filled-adornment-password">Senha</S.InputLabel>
+        
+        <S.FormControl fullWidth style={{marginBottom: '64px'}}>
+          <S.InputLabel id="senha">Senha</S.InputLabel>
           <S.OutlinedInput
+            labelId="senha"
             id="outlined-adornment-password"
-            name='password'
+            name='senha'
+            label="Senha"
             onChange={ onChangeValue }
             type={showPassword ? 'text' : 'password'}
             endAdornment={
